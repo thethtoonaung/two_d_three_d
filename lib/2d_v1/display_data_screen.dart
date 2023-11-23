@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:two_d_three_d/send_or_update_data.dart';
-import 'package:two_d_three_d/two_d_view_screen.dart';
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:two_d_three_d/2d_v1/send_or_update_data.dart';
+import 'package:two_d_three_d/2d_v1/two_d_view_screen.dart';
 
 // creating UI that will gather data and send it to firestore with means performing Flutter Firebase CRUD operations
 class DisplayDataScreen extends StatefulWidget {
