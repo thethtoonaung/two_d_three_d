@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:intl/intl.dart';
 import 'package:two_d_three_d/2d_v1/custom_text_form_field.dart';
+import 'package:two_d_three_d/2d_v2/models/two_d_numbers.dart';
 
 class SendOrUpdateData extends StatefulWidget {
   final int? zeroZero;
@@ -351,6 +352,8 @@ class _SendOrUpdateDataState extends State<SendOrUpdateData> {
       .toList();
   String? _btnSelectedVal;
 
+  List<int> twoDNumbers = [];
+
   @override
   void initState() {
     // zeroZero = widget.zeroZero;
@@ -460,8 +463,18 @@ class _SendOrUpdateDataState extends State<SendOrUpdateData> {
 
     createdDateController.text = widget.createdDate;
     noteController.text = widget.note ?? "Hello ...";
-
+    clickFunc();
     super.initState();
+  }
+
+  void clickFunc() {
+    for (int i = 1; i < 100; i++) {
+      twoDNumbers.add(i);
+
+      // twoDNumbers.add(i);
+
+      print(">>>>>$twoDNumbers");
+    }
   }
 
   @override
@@ -484,7 +497,7 @@ class _SendOrUpdateDataState extends State<SendOrUpdateData> {
         backgroundColor: Color.fromARGB(255, 115, 7, 7),
         centerTitle: true,
         title: Text(
-          '2D Cash In',
+          twoDNumbers.toString(),
           style: TextStyle(fontWeight: FontWeight.w900),
         ),
       ),
@@ -2131,7 +2144,8 @@ class _SendOrUpdateDataState extends State<SendOrUpdateData> {
 
                 if (widget.id.isEmpty) {
                   //create document and write data to firebase
-                  await dUser.set(jsonData).then((value) {
+                  TwoDNumberModel twoDNumbersModel = TwoDNumberModel();
+                  await dUser.set(twoDNumbersModel.toJson()).then((value) {
                     // zeroZeroController.text = '';
                     // zeroZeroController.text = '';
                     // zeroZeroController.text = '';
@@ -2165,7 +2179,8 @@ class _SendOrUpdateDataState extends State<SendOrUpdateData> {
 
                     setState(() {});
                   } else {
-                    await dUser.update(jsonData).then((value) {
+                    TwoDNumberModel twoDNumbersModel = TwoDNumberModel();
+                    await dUser.update(twoDNumbersModel.toJson()).then((value) {
                       // nameController.text = '';
                       // ageController.text = '';
                       // emailController.text = '';
